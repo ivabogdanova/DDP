@@ -1,0 +1,31 @@
+---
+title: "17 September 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r, warning=FALSE, echo=FALSE}
+library(leaflet)
+epflLatLong <- data.frame(
+        lat = c(46.5182757,46.518034,46.5230827, 46.5087324, 46.5226215, 46.5195, 46.5141598),
+        lng = c(6.568256,6.564814, 6.5646417, 6.6340879, 6.6353689, 6.5784, 6.6076341))
+
+epflSites <- c(
+        "<a 'href='http://rolexlearningcenter.epfl.ch'> Rolex Learning Center</a>",
+        "<a 'https://artlab.epfl.ch'>Art Lab</a>",
+        "<a 'https://www.stcc.ch/home/'>Swiss Tech Conevention Center</a>",
+        "<a 'https://www.olympic.org/museum'>The Olympic museum</a>",
+        "<a 'http://www.lausanne.ch/en/thematiques/culture-et-patrimoine/architecture-et-monuments/lausanne-medievale/cathedrale-de-lausanne.html'>Place de la Cathédrale</a>",
+        "<a 'http://unil.ch/index.html'>University of Lausanne</a>",
+        "<a 'http://www.lausanne.ch/lausanne-officielle/administration/securite-et-economie/service-economie/ports-et-rives-du-lac/port-de-vidy.html'>Port de Vidy</a>"
+)
+
+epflLatLong %>%
+        leaflet() %>%
+        addTiles %>%
+        addMarkers(popup = epflSites)
+```
